@@ -1,0 +1,15 @@
+C:\Users\User\Desktop\MyPortfolio\backend\Portfolio.Application\bin\Debug\net9.0\Portfolio.Application.deps.json
+C:\Users\User\Desktop\MyPortfolio\backend\Portfolio.Application\bin\Debug\net9.0\Portfolio.Application.dll
+C:\Users\User\Desktop\MyPortfolio\backend\Portfolio.Application\bin\Debug\net9.0\Portfolio.Application.pdb
+C:\Users\User\Desktop\MyPortfolio\backend\Portfolio.Application\bin\Debug\net9.0\Portfolio.Domain.dll
+C:\Users\User\Desktop\MyPortfolio\backend\Portfolio.Application\bin\Debug\net9.0\Portfolio.Domain.pdb
+C:\Users\User\Desktop\MyPortfolio\backend\Portfolio.Application\obj\Debug\net9.0\Portfolio.Application.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\MyPortfolio\backend\Portfolio.Application\obj\Debug\net9.0\Portfolio.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\MyPortfolio\backend\Portfolio.Application\obj\Debug\net9.0\Portfolio.Application.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\MyPortfolio\backend\Portfolio.Application\obj\Debug\net9.0\Portfolio.Application.AssemblyInfo.cs
+C:\Users\User\Desktop\MyPortfolio\backend\Portfolio.Application\obj\Debug\net9.0\Portfolio.Application.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\MyPortfolio\backend\Portfolio.Application\obj\Debug\net9.0\Portfoli.B086831A.Up2Date
+C:\Users\User\Desktop\MyPortfolio\backend\Portfolio.Application\obj\Debug\net9.0\Portfolio.Application.dll
+C:\Users\User\Desktop\MyPortfolio\backend\Portfolio.Application\obj\Debug\net9.0\refint\Portfolio.Application.dll
+C:\Users\User\Desktop\MyPortfolio\backend\Portfolio.Application\obj\Debug\net9.0\Portfolio.Application.pdb
+C:\Users\User\Desktop\MyPortfolio\backend\Portfolio.Application\obj\Debug\net9.0\ref\Portfolio.Application.dll
