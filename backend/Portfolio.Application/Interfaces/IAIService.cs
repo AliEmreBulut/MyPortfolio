@@ -7,3 +7,4 @@ public interface IAIService
 {
     Task<string> GenerateTextAsync(string prompt, CancellationToken cancellationToken = default);
 }
+    
