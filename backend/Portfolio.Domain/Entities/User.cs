@@ -22,6 +22,6 @@ public class User : IEntity
     public string ProfileImageUrl { get; set; } = string.Empty;
     public string ResumeUrl { get; set; } = string.Empty;
 
-    // Navigation Properties
+    // Bir kullanıcının birden fazla deneyimi olabilir
     public ICollection<Experience> Experiences { get; set; } = new List<Experience>();
 }
