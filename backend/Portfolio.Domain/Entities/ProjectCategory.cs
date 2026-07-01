@@ -11,7 +11,7 @@ public class ProjectCategory : IEntity
     
     public Guid ProjectId { get; set; }
     public Guid CategoryId { get; set; }
-
+    
     public Project Project { get; set; } = null!;
     public Category Category { get; set; } = null!;
 }

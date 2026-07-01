@@ -13,5 +13,6 @@ public class Category : IEntity
     public string Name { get; set; } = string.Empty;
 
     // Navigation Property
+    //Bir kategorinin altında birden fazla proje olabilir.
     public ICollection<ProjectCategory> ProjectCategories { get; set; } = new List<ProjectCategory>();
 }

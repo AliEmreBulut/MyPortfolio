@@ -15,5 +15,6 @@ public class Skill : IEntity
     public string IconUrl { get; set; } = string.Empty;
 
     // Navigation Property
+    //Bir yeteneğin birden fazla projesi olabilir.
     public ICollection<ProjectSkill> ProjectSkills { get; set; } = new List<ProjectSkill>();
 }

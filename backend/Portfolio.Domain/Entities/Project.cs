@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Portfolio.Domain.Enums;
 using Portfolio.Domain.Interfaces;
 
 namespace Portfolio.Domain.Entities;
@@ -17,8 +18,11 @@ public class Project : IEntity
     public string GithubUrl { get; set; } = string.Empty;
     public string LiveUrl { get; set; } = string.Empty;
     public int DisplayOrder { get; set; }
+    public ProjectStatus Status { get; set; } = ProjectStatus.InProgress;
     
     // Navigation Properties
+    //Bir projenin birden fazla kategorisi olabilir
     public ICollection<ProjectCategory> ProjectCategories { get; set; } = new List<ProjectCategory>();
+    //Bir projenin birden fazla yeteneği olabilir
     public ICollection<ProjectSkill> ProjectSkills { get; set; } = new List<ProjectSkill>();
 }

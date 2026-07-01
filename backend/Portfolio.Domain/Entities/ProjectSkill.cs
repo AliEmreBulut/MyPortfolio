@@ -9,7 +9,7 @@ public class ProjectSkill : IEntity
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
     
-    // Foreign Keys
+    // Foreign Keys (Proje ve Skill tablolarına bağlantı için)
     public Guid ProjectId { get; set; }
     public Guid SkillId { get; set; }
 
