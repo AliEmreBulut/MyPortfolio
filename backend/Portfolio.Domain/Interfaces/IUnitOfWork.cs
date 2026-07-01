@@ -5,5 +5,6 @@ namespace Portfolio.Domain.Interfaces;
 
 public interface IUnitOfWork : IDisposable
 {
-    Task<int> SaveChangesAsync();
+    //cancellation token eğer kullanıcı işlemini yarda keserse veritabanı işlemini iptal etmemizi sağlıyor.
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
