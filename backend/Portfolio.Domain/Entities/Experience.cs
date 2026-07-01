@@ -10,8 +10,8 @@ public class Experience : IEntity
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
 
-    public string CompanyOrInstitution { get; set; } = string.Empty;
-    public string Position { get; set; } = string.Empty;
+    public string Title { get; set; } = string.Empty;
+    public string Company { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public string Location { get; set; } = string.Empty;
 
@@ -21,4 +21,8 @@ public class Experience : IEntity
     public ExperienceType Type { get; set; } = ExperienceType.Job;
 
     public int DisplayOrder { get; set; }
+
+    // Navigation Property
+    public Guid UserId { get; set; }
+    public User User { get; set; } = null!;
 }

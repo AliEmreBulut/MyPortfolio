@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Portfolio.Domain.Interfaces;
 
 namespace Portfolio.Domain.Entities;
@@ -9,15 +10,18 @@ public class User : IEntity
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
     
-    // Güvenlik Alanları
+    // Güvenlik kısmı giriş için önemli!!
     public string Username { get; set; } = string.Empty;
     public string PasswordHash { get; set; } = string.Empty;
     public string Salt { get; set; } = string.Empty;
 
-    // Profil Alanları
+    // Profil bilgileri
     public string FullName { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
     public string AboutText { get; set; } = string.Empty;
     public string ProfileImageUrl { get; set; } = string.Empty;
     public string ResumeUrl { get; set; } = string.Empty;
+
+    // Navigation Properties
+    public ICollection<Experience> Experiences { get; set; } = new List<Experience>();
 }
