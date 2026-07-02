@@ -18,9 +18,9 @@ public class User : IEntity
     // Profil bilgileri
     public string FullName { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
-    public string AboutText { get; set; } = string.Empty;
-    public string ProfileImageUrl { get; set; } = string.Empty;
-    public string ResumeUrl { get; set; } = string.Empty;
+    public string? AboutText { get; set; }
+    public string? ProfileImageUrl { get; set; }
+    public string? ResumeUrl { get; set; }
 
     // Bir kullanıcının birden fazla deneyimi olabilir
     public ICollection<Experience> Experiences { get; set; } = new List<Experience>();

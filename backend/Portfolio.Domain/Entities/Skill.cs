@@ -12,8 +12,8 @@ public class Skill : IEntity
     public DateTime? UpdatedAt { get; set; }
     
     public string Name { get; set; } = string.Empty;
-    public string IconName { get; set; } = string.Empty;
-    public string IconUrl { get; set; } = string.Empty;
+    public string? IconName { get; set; }
+    public string? IconUrl { get; set; }
     public SkillCategory Category { get; set; } = SkillCategory.Other;
 
     // Navigation Property

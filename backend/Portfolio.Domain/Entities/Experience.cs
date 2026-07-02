@@ -12,8 +12,8 @@ public class Experience : IEntity
 
     public string Title { get; set; } = string.Empty;
     public string Company { get; set; } = string.Empty;
-    public string Description { get; set; } = string.Empty;
-    public string Location { get; set; } = string.Empty;
+    public string? Description { get; set; }
+    public string? Location { get; set; }
 
     public DateTime StartDate { get; set; }
     public DateTime? EndDate { get; set; } // null ise hâlâ devam ediyor
