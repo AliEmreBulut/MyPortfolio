@@ -11,7 +11,18 @@ public class ProjectRepository : GenericRepository<Project>, IProjectRepository
     {
     }
 
-    public async Task<Project?> GetProjectWithDetailsAsync(Guid id)
+    public async Task<IEnumerable<Project>> GetProjectsWithDetailsAsync()
+    {
+        return await _context.Projects
+            .Include(p => p.ProjectCategories)
+            .ThenInclude(pc => pc.Category)
+            .Include(p => p.ProjectSkills)
+            .ThenInclude(ps => ps.Skill)
+            .OrderBy(p => p.DisplayOrder)
+            .ToListAsync();
+    }
+
+    public async Task<Project?> GetProjectWithDetailsByIdAsync(Guid id)
     {
         return await _context.Projects
             .Include(p => p.ProjectCategories)

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Portfolio.Domain.Interfaces;
 using Portfolio.Infrastructure.Data.Contexts;
+using System.Linq.Expressions;
 
 namespace Portfolio.Infrastructure.Repositories;
 
@@ -18,6 +19,11 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class, IEnti
     public async Task<IEnumerable<T>> GetAllAsync()
     {
         return await _dbSet.ToListAsync();
+    }
+
+    public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
+    {
+        return await _dbSet.Where(predicate).ToListAsync();
     }
 
     public async Task<T?> GetByIdAsync(Guid id)
