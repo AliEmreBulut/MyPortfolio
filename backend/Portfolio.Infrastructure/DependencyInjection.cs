@@ -15,7 +15,7 @@ public static class DependencyInjection
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(connectionString));
 
-        // Unit of Work
+        // UOW
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         // Generic Repository
