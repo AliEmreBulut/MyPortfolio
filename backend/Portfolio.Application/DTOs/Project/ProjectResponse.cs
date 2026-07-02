@@ -8,11 +8,11 @@ public class ProjectResponse
 {
     public Guid Id { get; set; }
     public string Title { get; set; } = string.Empty;
-    public string ShortSummary { get; set; } = string.Empty;
-    public string DetailedDescription { get; set; } = string.Empty;
-    public string CoverImageUrl { get; set; } = string.Empty;
-    public string GithubUrl { get; set; } = string.Empty;
-    public string LiveUrl { get; set; } = string.Empty;
+    public string? ShortSummary { get; set; }
+    public string? DetailedDescription { get; set; }
+    public string? CoverImageUrl { get; set; }
+    public string? GithubUrl { get; set; }
+    public string? LiveUrl { get; set; }
     public int DisplayOrder { get; set; }
     public ProjectStatus Status { get; set; }
     
