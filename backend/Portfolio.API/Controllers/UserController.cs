@@ -29,14 +29,7 @@ public class UserController : ControllerBase
     [Authorize]
     public async Task<IActionResult> UpdateProfile([FromBody] UpdateUserProfileRequest request)
     {
-        try
-        {
-            await _userService.UpdateProfileAsync(request);
-            return NoContent();
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        await _userService.UpdateProfileAsync(request);
+        return NoContent();
     }
 }

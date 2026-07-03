@@ -1,4 +1,5 @@
 using FluentValidation.AspNetCore;
+using Portfolio.API.Middlewares;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Portfolio.Infrastructure.Data.Contexts;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Portfolio.Application;
 using Portfolio.Infrastructure;
+using Portfolio.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,6 +46,8 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {

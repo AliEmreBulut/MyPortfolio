@@ -46,28 +46,14 @@ public class ProjectsController : ControllerBase
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> Update(Guid id, [FromBody] UpdateProjectRequest request)
     {
-        try
-        {
-            await _projectService.UpdateProjectAsync(id, request);
-            return NoContent(); // 204 No Content
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message); // 400
-        }
+        await _projectService.UpdateProjectAsync(id, request);
+        return NoContent(); // 204 No Content
     }
 
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {
-        try
-        {
-            await _projectService.DeleteProjectAsync(id);
-            return NoContent();
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
+        await _projectService.DeleteProjectAsync(id);
+        return NoContent();
     }
 }

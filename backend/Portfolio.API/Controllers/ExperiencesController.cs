@@ -39,14 +39,14 @@ public class ExperiencesController : ControllerBase
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> Update(Guid id, [FromBody] UpdateExperienceRequest request)
     {
-        try { await _experienceService.UpdateExperienceAsync(id, request); return NoContent(); }
-        catch (Exception ex) { return BadRequest(ex.Message); }
+        await _experienceService.UpdateExperienceAsync(id, request);
+        return NoContent();
     }
 
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {
-        try { await _experienceService.DeleteExperienceAsync(id); return NoContent(); }
-        catch (Exception ex) { return BadRequest(ex.Message); }
+        await _experienceService.DeleteExperienceAsync(id);
+        return NoContent();
     }
 }

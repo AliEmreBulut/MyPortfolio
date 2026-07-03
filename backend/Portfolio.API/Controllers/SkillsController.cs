@@ -52,22 +52,14 @@ public class SkillsController : ControllerBase
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> Update(Guid id, [FromBody] UpdateSkillRequest request)
     {
-        try
-        {
-            await _skillService.UpdateSkillAsync(id, request);
-            return NoContent();
-        }
-        catch (Exception ex) { return BadRequest(ex.Message); }
+        await _skillService.UpdateSkillAsync(id, request);
+        return NoContent();
     }
 
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {
-        try
-        {
-            await _skillService.DeleteSkillAsync(id);
-            return NoContent();
-        }
-        catch (Exception ex) { return BadRequest(ex.Message); }
+        await _skillService.DeleteSkillAsync(id);
+        return NoContent();
     }
 }

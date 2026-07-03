@@ -11,16 +11,11 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         //Primary key
         builder.HasKey(x => x.Id);
 
-        //username unique olmalı
         builder.HasIndex(x => x.Username).IsUnique();
 
-
-        //Property tanımları
-
-        //username zorunlu ve max 50
         builder.Property(x => x.Username).IsRequired().HasMaxLength(50);
 
-        //password zorunlu (byte array olduğu için MaxLength kaldırıldı)
+        //password zorunlu
         builder.Property(x => x.PasswordHash).IsRequired();
         builder.Property(x => x.PasswordSalt).IsRequired();
 

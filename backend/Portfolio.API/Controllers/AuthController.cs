@@ -18,14 +18,7 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        try
-        {
-            var tokenResponse = await _authService.LoginAsync(request);
-            return Ok(tokenResponse);
-        }
-        catch (Exception ex)
-        {
-            return Unauthorized(new { message = ex.Message }); 
-        }
+        var tokenResponse = await _authService.LoginAsync(request);
+        return Ok(tokenResponse);
     }
 }

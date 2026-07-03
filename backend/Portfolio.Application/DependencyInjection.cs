@@ -16,7 +16,6 @@ public static class DependencyInjection
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IAuthService, AuthService>();
         
-        // FluentValidation Kaydı
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         
         return services;
