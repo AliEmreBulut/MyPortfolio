@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Portfolio.Infrastructure.Data.Contexts;
@@ -13,6 +14,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddInfrastructure(connectionString);
 builder.Services.AddApplication();
 builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddOpenApi();
 
 // JWT Authentication Yapılandırması

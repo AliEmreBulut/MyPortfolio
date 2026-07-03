@@ -1,6 +1,8 @@
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Portfolio.Application.Interfaces;
 using Portfolio.Application.Services;
+using System.Reflection;
 
 namespace Portfolio.Application;
 
@@ -13,6 +15,9 @@ public static class DependencyInjection
         services.AddScoped<IExperienceService, ExperienceService>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IAuthService, AuthService>();
+        
+        // FluentValidation Kaydı
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         
         return services;
     }
