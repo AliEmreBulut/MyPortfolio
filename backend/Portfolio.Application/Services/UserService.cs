@@ -31,7 +31,13 @@ public class UserService : IUserService
             Title = mainUser.Title,
             AboutText = mainUser.AboutText,
             ProfileImageUrl = mainUser.ProfileImageUrl,
-            ResumeUrl = mainUser.ResumeUrl
+            ResumeUrl = mainUser.ResumeUrl,
+            Email = mainUser.Email,
+            Phone = mainUser.Phone,
+            GitHubUrl = mainUser.GitHubUrl,
+            LinkedInUrl = mainUser.LinkedInUrl,
+            TwitterUrl = mainUser.TwitterUrl,
+            InstagramUrl = mainUser.InstagramUrl
         };
     }
 
@@ -47,6 +53,12 @@ public class UserService : IUserService
         mainUser.AboutText = request.AboutText;
         mainUser.ProfileImageUrl = request.ProfileImageUrl;
         mainUser.ResumeUrl = request.ResumeUrl;
+        mainUser.Email = request.Email;
+        mainUser.Phone = request.Phone;
+        mainUser.GitHubUrl = request.GitHubUrl;
+        mainUser.LinkedInUrl = request.LinkedInUrl;
+        mainUser.TwitterUrl = request.TwitterUrl;
+        mainUser.InstagramUrl = request.InstagramUrl;
         mainUser.UpdatedAt = DateTime.UtcNow;
 
         _userRepository.Update(mainUser);

@@ -10,4 +10,10 @@ public class UserProfileResponse
     public string? AboutText { get; set; }
     public string? ProfileImageUrl { get; set; }
     public string? ResumeUrl { get; set; }
+    public string? Email { get; set; }
+    public string? Phone { get; set; }
+    public string? GitHubUrl { get; set; }
+    public string? LinkedInUrl { get; set; }
+    public string? TwitterUrl { get; set; }
+    public string? InstagramUrl { get; set; }
 }
