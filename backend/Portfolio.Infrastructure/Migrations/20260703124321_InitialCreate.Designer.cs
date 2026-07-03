@@ -12,7 +12,7 @@ using Portfolio.Infrastructure.Data.Contexts;
 namespace Portfolio.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260702202905_InitialCreate")]
+    [Migration("20260703124321_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -175,6 +175,36 @@ namespace Portfolio.Infrastructure.Migrations
                     b.ToTable("ProjectCategories");
                 });
 
+            modelBuilder.Entity("Portfolio.Domain.Entities.ProjectImage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("DisplayOrder")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)");
+
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("ProjectImages");
+                });
+
             modelBuilder.Entity("Portfolio.Domain.Entities.ProjectSkill", b =>
                 {
                     b.Property<Guid>("ProjectId")
@@ -270,10 +300,13 @@ namespace Portfolio.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("PasswordHash")
+                    b.Property<byte[]>("PasswordHash")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
+                        .HasColumnType("bytea");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("bytea");
 
                     b.Property<string>("ProfileImageUrl")
                         .HasColumnType("text");
@@ -281,10 +314,8 @@ namespace Portfolio.Infrastructure.Migrations
                     b.Property<string>("ResumeUrl")
                         .HasColumnType("text");
 
-                    b.Property<string>("Salt")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
+                    b.Property<bool>("Status")
+                        .HasColumnType("boolean");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -336,6 +367,17 @@ namespace Portfolio.Infrastructure.Migrations
                     b.Navigation("Project");
                 });
 
+            modelBuilder.Entity("Portfolio.Domain.Entities.ProjectImage", b =>
+                {
+                    b.HasOne("Portfolio.Domain.Entities.Project", "Project")
+                        .WithMany("ProjectImages")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
             modelBuilder.Entity("Portfolio.Domain.Entities.ProjectSkill", b =>
                 {
                     b.HasOne("Portfolio.Domain.Entities.Project", "Project")
@@ -363,6 +405,8 @@ namespace Portfolio.Infrastructure.Migrations
             modelBuilder.Entity("Portfolio.Domain.Entities.Project", b =>
                 {
                     b.Navigation("ProjectCategories");
+
+                    b.Navigation("ProjectImages");
 
                     b.Navigation("ProjectSkills");
                 });

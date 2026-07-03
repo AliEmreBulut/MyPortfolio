@@ -27,9 +27,9 @@ public class AuthService : IAuthService
         var users = await _userRepository.FindAsync(u => u.Username == request.Username);
         var user = users.FirstOrDefault();
 
-        // Kullanıcı yoksa veya şifre yanlışsa hata döndür. User'daki PasswordHash string olarak Base64 tutulur.
-        if (user == null || string.IsNullOrEmpty(user.PasswordHash) || string.IsNullOrEmpty(user.Salt) ||
-            !VerifyPasswordHash(request.Password, Convert.FromBase64String(user.PasswordHash), Convert.FromBase64String(user.Salt)))
+        // Kullanıcı yoksa veya şifre yanlışsa hata döndür. User'daki PasswordHash ve PasswordSalt byte array olarak tutulur.
+        if (user == null || user.PasswordHash == null || user.PasswordHash.Length == 0 || user.PasswordSalt == null || user.PasswordSalt.Length == 0 ||
+            !VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
         {
             throw new Exception("Geçersiz kullanıcı adı veya şifre.");
         }

@@ -12,8 +12,11 @@ public class User : IEntity
     
     // Güvenlik kısmı giriş için önemli!!
     public string Username { get; set; } = string.Empty;
-    public string PasswordHash { get; set; } = string.Empty;
-    public string Salt { get; set; } = string.Empty;
+    public byte[] PasswordHash { get; set; } = Array.Empty<byte>();
+    public byte[] PasswordSalt { get; set; } = Array.Empty<byte>();
+    
+    // Kullanıcının sistemde aktif olup olmadığı
+    public bool Status { get; set; } = true;
 
     // Profil bilgileri
     public string FullName { get; set; } = string.Empty;

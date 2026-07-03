@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Portfolio.Application.DTOs.User;
 using Portfolio.Application.Interfaces;
@@ -17,6 +18,7 @@ public class UserController : ControllerBase
 
     // Profil tekil olduğu için id almamıza gerek yok
     [HttpGet("profile")]
+    [AllowAnonymous]
     public async Task<IActionResult> GetProfile()
     {
         var profile = await _userService.GetProfileAsync();
@@ -24,6 +26,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPut("profile")]
+    [Authorize]
     public async Task<IActionResult> UpdateProfile([FromBody] UpdateUserProfileRequest request)
     {
         try

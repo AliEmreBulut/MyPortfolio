@@ -20,10 +20,9 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         //username zorunlu ve max 50
         builder.Property(x => x.Username).IsRequired().HasMaxLength(50);
 
-        //password zorunlu ve max 500
-        builder.Property(x => x.PasswordHash).IsRequired().HasMaxLength(500);
-
-        builder.Property(x => x.Salt).IsRequired().HasMaxLength(500);
+        //password zorunlu (byte array olduğu için MaxLength kaldırıldı)
+        builder.Property(x => x.PasswordHash).IsRequired();
+        builder.Property(x => x.PasswordSalt).IsRequired();
 
 
     }

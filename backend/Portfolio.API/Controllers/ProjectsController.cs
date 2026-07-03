@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Portfolio.Application.DTOs.Project;
 using Portfolio.Application.Interfaces;
@@ -5,7 +6,8 @@ using Portfolio.Application.Interfaces;
 namespace Portfolio.API.Controllers;
 
 [ApiController]
-[Route("api/[controller]")] // api/projects
+[Route("api/[controller]")]
+[Authorize]
 public class ProjectsController : ControllerBase
 {
     private readonly IProjectService _projectService;
@@ -16,6 +18,7 @@ public class ProjectsController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<IActionResult> GetAll()
     {
         var projects = await _projectService.GetAllProjectsAsync();
@@ -23,6 +26,7 @@ public class ProjectsController : ControllerBase
     }
 
     [HttpGet("{id:guid}")]
+    [AllowAnonymous]
     public async Task<IActionResult> GetById(Guid id)
     {
         var project = await _projectService.GetProjectByIdAsync(id);
@@ -45,7 +49,7 @@ public class ProjectsController : ControllerBase
         try
         {
             await _projectService.UpdateProjectAsync(id, request);
-            return NoContent(); // 204 No Content (Güncelleme başarılı, dönecek ekstra veri yok)
+            return NoContent(); // 204 No Content
         }
         catch (Exception ex)
         {

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Portfolio.Application.DTOs.Skill;
 using Portfolio.Application.Interfaces;
@@ -7,6 +8,7 @@ namespace Portfolio.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")] // api/skills
+[Authorize]
 public class SkillsController : ControllerBase
 {
     private readonly ISkillService _skillService;
@@ -17,12 +19,14 @@ public class SkillsController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<IActionResult> GetAll()
     {
         return Ok(await _skillService.GetAllSkillsAsync());
     }
 
     [HttpGet("{id:guid}")]
+    [AllowAnonymous]
     public async Task<IActionResult> GetById(Guid id)
     {
         var skill = await _skillService.GetSkillByIdAsync(id);
@@ -31,6 +35,7 @@ public class SkillsController : ControllerBase
 
     //Kategoriye göre getirme
     [HttpGet("category/{category}")]
+    [AllowAnonymous]
     public async Task<IActionResult> GetByCategory(SkillCategory category)
     {
         var skills = await _skillService.GetSkillsByCategoryAsync(category);

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Portfolio.Application.DTOs.Experience;
 using Portfolio.Application.Interfaces;
@@ -6,6 +7,7 @@ namespace Portfolio.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")] // api/experiences
+[Authorize]
 public class ExperiencesController : ControllerBase
 {
     private readonly IExperienceService _experienceService;
@@ -16,9 +18,11 @@ public class ExperiencesController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<IActionResult> GetAll() => Ok(await _experienceService.GetAllExperiencesAsync());
 
     [HttpGet("{id:guid}")]
+    [AllowAnonymous]
     public async Task<IActionResult> GetById(Guid id)
     {
         var exp = await _experienceService.GetExperienceByIdAsync(id);
