@@ -1,10 +1,8 @@
-using System.Threading;
-using System.Threading.Tasks;
+using Portfolio.Application.DTOs.Ai;
 
 namespace Portfolio.Application.Interfaces;
 
-public interface IAIService
+public interface IAiService
 {
-    Task<string> GenerateTextAsync(string prompt, CancellationToken cancellationToken = default);
+    Task<string> AskQuestionAsync(AiChatRequest request);
 }
-    
