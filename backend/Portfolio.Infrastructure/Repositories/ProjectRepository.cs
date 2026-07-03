@@ -18,6 +18,7 @@ public class ProjectRepository : GenericRepository<Project>, IProjectRepository
             .ThenInclude(pc => pc.Category)
             .Include(p => p.ProjectSkills)
             .ThenInclude(ps => ps.Skill)
+            .Include(p => p.ProjectImages)
             .OrderBy(p => p.DisplayOrder)
             .ToListAsync();
     }
@@ -29,6 +30,7 @@ public class ProjectRepository : GenericRepository<Project>, IProjectRepository
             .ThenInclude(pc => pc.Category)
             .Include(p => p.ProjectSkills)
             .ThenInclude(ps => ps.Skill)
+            .Include(p => p.ProjectImages)
             .FirstOrDefaultAsync(p => p.Id == id);
     }
 }

@@ -18,6 +18,7 @@ public class ProjectResponse
     
     public List<CategoryResponse> Categories { get; set; } = new();
     public List<SkillResponse> Skills { get; set; } = new();
+    public List<string> GalleryImages { get; set; } = new();
     
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }

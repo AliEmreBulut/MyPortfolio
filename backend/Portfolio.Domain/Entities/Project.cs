@@ -25,4 +25,6 @@ public class Project : IEntity
     public ICollection<ProjectCategory> ProjectCategories { get; set; } = new List<ProjectCategory>();
     //Bir projenin birden fazla yeteneği olabilir
     public ICollection<ProjectSkill> ProjectSkills { get; set; } = new List<ProjectSkill>();
+    //Bir projenin birden fazla resmi olabilir
+    public ICollection<ProjectImage> ProjectImages { get; set; } = new List<ProjectImage>();
 }

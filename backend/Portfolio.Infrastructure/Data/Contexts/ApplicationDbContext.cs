@@ -18,7 +18,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<ProjectSkill> ProjectSkills { get; set; } = null!;
     public DbSet<ProjectCategory> ProjectCategories { get; set; } = null!;
     public DbSet<PromptLog> PromptLogs { get; set; } = null!;
-
+    public DbSet<ProjectImage> ProjectImages { get; set; } = null!;
 
     // ekleme ve güncelleme anında CreatedAt ve UpdatedAt alanlarını otomatik doldurmak için.
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

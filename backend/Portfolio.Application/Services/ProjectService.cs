@@ -57,6 +57,12 @@ public class ProjectService : IProjectService
             ProjectSkills = request.SkillIds.Select(sId => new ProjectSkill 
             { 
                 SkillId = sId 
+            }).ToList(),
+
+            ProjectImages = request.GalleryImageUrls.Select((imgUrl, index) => new ProjectImage 
+            { 
+                ImageUrl = imgUrl,
+                DisplayOrder = index
             }).ToList()
         };
 
@@ -94,6 +100,17 @@ public class ProjectService : IProjectService
         foreach (var sId in request.SkillIds)
         {
             project.ProjectSkills.Add(new ProjectSkill { ProjectId = id, SkillId = sId });
+        }
+
+        project.ProjectImages.Clear();
+        for (int i = 0; i < request.GalleryImageUrls.Count; i++)
+        {
+            project.ProjectImages.Add(new ProjectImage 
+            { 
+                ProjectId = id, 
+                ImageUrl = request.GalleryImageUrls[i], 
+                DisplayOrder = i 
+            });
         }
 
         _projectRepository.Update(project);
@@ -138,7 +155,9 @@ public class ProjectService : IProjectService
                 IconName = ps.Skill.IconName,
                 IconUrl = ps.Skill.IconUrl,
                 Category = ps.Skill.Category
-            }).ToList()
+            }).ToList(),
+            
+            GalleryImages = project.ProjectImages.OrderBy(pi => pi.DisplayOrder).Select(pi => pi.ImageUrl).ToList()
         };
     }
 }

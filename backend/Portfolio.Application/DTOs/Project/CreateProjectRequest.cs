@@ -15,4 +15,5 @@ public class CreateProjectRequest
 
     public List<Guid> CategoryIds { get; set; } = new();
     public List<Guid> SkillIds { get; set; } = new();
+    public List<string> GalleryImageUrls { get; set; } = new();
 }
