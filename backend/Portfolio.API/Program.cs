@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Portfolio.Application;
 using Portfolio.Infrastructure;
-using Portfolio.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,6 +51,11 @@ app.UseMiddleware<ExceptionMiddleware>();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/openapi/v1.json", "Portfolio API v1");
+        options.RoutePrefix = "swagger";
+    });
 }
 
 app.UseCors("AllowFrontend");

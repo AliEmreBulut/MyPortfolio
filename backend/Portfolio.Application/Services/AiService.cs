@@ -84,7 +84,7 @@ public class AiService : IAiService
 
         if (!response.IsSuccessStatusCode)
         {
-            return "Üzgünüm, şu an OpenAI iletişim merkezime bağlanamıyorum.";
+            return "Üzgünüm, şu an iletişim merkezime bağlanamıyorum.";
         }
 
         var responseString = await response.Content.ReadAsStringAsync();
@@ -95,6 +95,6 @@ public class AiService : IAiService
             .GetProperty("content")
             .GetString();
 
-        return answer ?? "Kelimelerimi kaybettim, yanıt veremiyorum.";
+        return answer ?? "Üzgünüm, şu an yanıt veremiyorum.";
     }
 }
