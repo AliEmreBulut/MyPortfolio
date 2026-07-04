@@ -8,6 +8,7 @@ using Portfolio.Application.DTOs.Auth;
 using Portfolio.Application.Interfaces;
 using Portfolio.Domain.Entities;
 using Portfolio.Domain.Interfaces;
+using Portfolio.Domain.Exceptions;
 
 namespace Portfolio.Application.Services;
 
@@ -31,7 +32,7 @@ public class AuthService : IAuthService
         if (user == null || user.PasswordHash == null || user.PasswordHash.Length == 0 || user.PasswordSalt == null || user.PasswordSalt.Length == 0 ||
             !VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
         {
-            throw new Exception("Geçersiz kullanıcı adı veya şifre.");
+            throw new UnauthorizedException("Geçersiz kullanıcı adı veya şifre.");
         }
 
         // şifre doğruysa token üret ve dön

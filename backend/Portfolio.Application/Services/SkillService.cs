@@ -3,6 +3,7 @@ using Portfolio.Application.Interfaces;
 using Portfolio.Domain.Entities;
 using Portfolio.Domain.Enums;
 using Portfolio.Domain.Interfaces;
+using Portfolio.Domain.Exceptions;
 
 namespace Portfolio.Application.Services;
 
@@ -93,7 +94,7 @@ public class SkillService : ISkillService
     {
         var skill = await _skillRepository.GetByIdAsync(id);
         if (skill is null) 
-            throw new Exception("Skill not found"); // Buraya custom exception yazabiliriz.(Ör: NotFoundException)
+            throw new NotFoundException("Skill not found"); // Buraya custom exception yazabiliriz.(Ör: NotFoundException)
 
         // Var olan Entity'yi güncelliyoruz
         skill.Name = request.Name;
@@ -110,7 +111,7 @@ public class SkillService : ISkillService
     {
         var skill = await _skillRepository.GetByIdAsync(id);
         if (skill is null) 
-            throw new Exception("Skill not found");
+            throw new NotFoundException("Skill not found");
 
         _skillRepository.Delete(skill);
         await _unitOfWork.SaveChangesAsync();

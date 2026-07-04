@@ -2,6 +2,7 @@ using Portfolio.Application.DTOs.User;
 using Portfolio.Application.Interfaces;
 using Portfolio.Domain.Entities;
 using Portfolio.Domain.Interfaces;
+using Portfolio.Domain.Exceptions;
 
 namespace Portfolio.Application.Services;
 
@@ -46,7 +47,7 @@ public class UserService : IUserService
         var users = await _userRepository.GetAllAsync();
         var mainUser = users.FirstOrDefault();
         
-        if (mainUser is null) throw new Exception("User not found in the system.");
+        if (mainUser is null) throw new NotFoundException("User not found in the system.");
 
         mainUser.FullName = request.FullName;
         mainUser.Title = request.Title;

@@ -2,6 +2,7 @@ using Portfolio.Application.DTOs.Experience;
 using Portfolio.Application.Interfaces;
 using Portfolio.Domain.Entities;
 using Portfolio.Domain.Interfaces;
+using Portfolio.Domain.Exceptions;
 
 namespace Portfolio.Application.Services;
 
@@ -91,7 +92,7 @@ public class ExperienceService : IExperienceService
     public async Task UpdateExperienceAsync(Guid id, UpdateExperienceRequest request)
     {
         var experience = await _experienceRepository.GetByIdAsync(id);
-        if (experience is null) throw new Exception("Experience not found");
+        if (experience is null) throw new NotFoundException("Experience not found");
 
         experience.Title = request.Title;
         experience.Company = request.Company;
@@ -110,7 +111,7 @@ public class ExperienceService : IExperienceService
     public async Task DeleteExperienceAsync(Guid id)
     {
         var experience = await _experienceRepository.GetByIdAsync(id);
-        if (experience is null) throw new Exception("Experience not found");
+        if (experience is null) throw new NotFoundException("Experience not found");
 
         _experienceRepository.Delete(experience);
         await _unitOfWork.SaveChangesAsync();

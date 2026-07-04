@@ -4,6 +4,7 @@ using Portfolio.Application.DTOs.Skill;
 using Portfolio.Application.Interfaces;
 using Portfolio.Domain.Entities;
 using Portfolio.Domain.Interfaces;
+using Portfolio.Domain.Exceptions;
 
 namespace Portfolio.Application.Services;
 
@@ -77,7 +78,7 @@ public class ProjectService : IProjectService
     {
         // Projeyi ve mevcut ilişkilerini veritabanından çekiyoruz.
         var project = await _projectRepository.GetProjectWithDetailsByIdAsync(id);
-        if (project is null) throw new Exception("Project not found");
+        if (project is null) throw new NotFoundException("Project not found");
 
         project.Title = request.Title;
         project.ShortSummary = request.ShortSummary;
@@ -120,7 +121,7 @@ public class ProjectService : IProjectService
     public async Task DeleteProjectAsync(Guid id)
     {
         var project = await _projectRepository.GetByIdAsync(id);
-        if (project is null) throw new Exception("Project not found");
+        if (project is null) throw new NotFoundException("Project not found");
 
         _projectRepository.Delete(project);
         await _unitOfWork.SaveChangesAsync();
