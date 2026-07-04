@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { error } from 'console';
-import { config } from 'process';
 
 export const apiClient = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -9,6 +7,7 @@ export const apiClient = axios.create({
   },
 });
 
+//Request Interceptor her istekte araya girerek token kontrolü yapıyor
 apiClient.interceptors.request.use(async (config) => {
   if (typeof window != 'undefined') {
     const token = localStorage.getItem('jwt_token');
@@ -25,7 +24,7 @@ apiClient.interceptors.request.use(async (config) => {
 }
 );
 
-
+//Response Interceptor yanıtları kontrol eder
 apiClient.interceptors.response.use( (response) => response,
 (error) => {
   if(error.response?.status === 401){
