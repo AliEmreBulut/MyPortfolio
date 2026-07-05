@@ -47,7 +47,7 @@ public class UserService : IUserService
         var users = await _userRepository.GetAllAsync();
         var mainUser = users.FirstOrDefault();
         
-        if (mainUser is null) throw new NotFoundException("User not found in the system.");
+        if (mainUser is null) throw new NotFoundException("Kullanıcı sistemde bulunamadı.");
 
         mainUser.FullName = request.FullName;
         mainUser.Title = request.Title;

@@ -69,8 +69,8 @@ public class AuthService : IAuthService
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
         
-        // şifreyi HMACSHA512 ile imzalıyoruz
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+        // şifreyi HMACSHA256 ile imzalıyoruz
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
