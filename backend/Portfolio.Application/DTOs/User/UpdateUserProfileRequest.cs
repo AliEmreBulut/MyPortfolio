@@ -4,6 +4,8 @@ public class UpdateUserProfileRequest
 {
     public string FullName { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
+    public string? ShortSummary { get; set; }
+    public string? HeroCodeSnippet { get; set; }
     public string? AboutText { get; set; }
     public string? ProfileImageUrl { get; set; }
     public string? ResumeUrl { get; set; }

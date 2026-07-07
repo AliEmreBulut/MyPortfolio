@@ -30,6 +30,8 @@ public class UserService : IUserService
             Id = mainUser.Id,
             FullName = mainUser.FullName,
             Title = mainUser.Title,
+            ShortSummary = mainUser.ShortSummary,
+            HeroCodeSnippet = mainUser.HeroCodeSnippet,
             AboutText = mainUser.AboutText,
             ProfileImageUrl = mainUser.ProfileImageUrl,
             ResumeUrl = mainUser.ResumeUrl,
@@ -51,6 +53,8 @@ public class UserService : IUserService
 
         mainUser.FullName = request.FullName;
         mainUser.Title = request.Title;
+        mainUser.ShortSummary = request.ShortSummary;
+        mainUser.HeroCodeSnippet = request.HeroCodeSnippet;
         mainUser.AboutText = request.AboutText;
         mainUser.ProfileImageUrl = request.ProfileImageUrl;
         mainUser.ResumeUrl = request.ResumeUrl;
