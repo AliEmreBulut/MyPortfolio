@@ -61,12 +61,13 @@ public class ExperienceService : IExperienceService
     {
         var newExperience = new Experience
         {
+            Id = Guid.NewGuid(),
             Title = request.Title,
             Company = request.Company,
             Description = request.Description,
             Location = request.Location,
-            StartDate = request.StartDate,
-            EndDate = request.EndDate,
+            StartDate = request.StartDate.ToUniversalTime(),
+            EndDate = request.EndDate?.ToUniversalTime(),
             Type = request.Type,
             DisplayOrder = request.DisplayOrder,
             UserId = request.UserId
@@ -98,8 +99,8 @@ public class ExperienceService : IExperienceService
         experience.Company = request.Company;
         experience.Description = request.Description;
         experience.Location = request.Location;
-        experience.StartDate = request.StartDate;
-        experience.EndDate = request.EndDate;
+        experience.StartDate = request.StartDate.ToUniversalTime();
+        experience.EndDate = request.EndDate?.ToUniversalTime();
         experience.Type = request.Type;
         experience.DisplayOrder = request.DisplayOrder;
         experience.UpdatedAt = DateTime.UtcNow;
