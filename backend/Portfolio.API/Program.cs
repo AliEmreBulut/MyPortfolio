@@ -17,6 +17,7 @@ builder.Services.AddApplication();
 builder.Services.AddControllers();
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddOpenApi();
+builder.Services.AddHttpContextAccessor();
 
 // JWT Authentication Yapılandırması
 var secretKey = builder.Configuration.GetSection("Jwt:Secret").Value;
@@ -44,6 +45,9 @@ builder.Services.AddCors(options =>
         policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 });
 
+var webRoot = builder.Environment.WebRootPath ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+if (!Directory.Exists(webRoot)) Directory.CreateDirectory(webRoot);
+
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionMiddleware>();
@@ -59,6 +63,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("AllowFrontend");
+
+app.UseStaticFiles(); // wwwroot içindeki resimlerin dışarıdan erişilebilir olmasını sağlar
 
 app.UseAuthentication();
 app.UseAuthorization();
