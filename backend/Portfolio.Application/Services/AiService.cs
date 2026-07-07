@@ -55,46 +55,59 @@ public class AiService : IAiService
             $"Sosyal Medyaları: GitHub({profile?.GitHubUrl}), LinkedIn({profile?.LinkedInUrl}). " +
             $"Soru: {request.Message}. Cevabın kısa, samimi, yardımsever ve sadece bu yazılımcı ile ilgili olsun.";
 
-        // ChatGPT API'sine istek atıyoruz
-        var apiKey = _configuration["OpenAI:ApiKey"];
+        // Gemini API'sine istek atıyoruz
+        var apiKey = _configuration["Gemini:ApiKey"];
         if (string.IsNullOrEmpty(apiKey)) 
         {
-            return "AI asistan şu an yapılandırılmamış, lütfen sistem yöneticisinin OpenAI API Key girmesini bekleyin.";
+            return "AI asistan şu an yapılandırılmamış, lütfen sistem yöneticisinin Gemini API Key girmesini bekleyin.";
         }
 
-        string openAiUrl = "https://api.openai.com/v1/chat/completions";
+        string geminiUrl = $"https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key={apiKey}";
         
         var requestBody = new
         {
-            model = "gpt-4o-mini", 
-            messages = new[]
+            contents = new[]
             {
-                new { role = "system", content = systemContext },
-                new { role = "user", content = request.Message }
-            },
-            temperature = 0.7
+                new 
+                { 
+                    parts = new[] 
+                    { 
+                        new { text = systemContext + "\n\n" + request.Message } 
+                    } 
+                }
+            }
         };
 
         var content = new StringContent(JsonSerializer.Serialize(requestBody), Encoding.UTF8, "application/json");
-        // OpenAI için Authorization Token ekliyoruz
         _httpClient.DefaultRequestHeaders.Clear();
-        _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
 
-        var response = await _httpClient.PostAsync(openAiUrl, content);
+        var response = await _httpClient.PostAsync(geminiUrl, content);
 
         if (!response.IsSuccessStatusCode)
         {
+            var errorContent = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"[Gemini Error] {response.StatusCode}: {errorContent}");
             return "Üzgünüm, şu an iletişim merkezime bağlanamıyorum.";
         }
 
         var responseString = await response.Content.ReadAsStringAsync();
         using var jsonDoc = JsonDocument.Parse(responseString);
-        var answer = jsonDoc.RootElement
-            .GetProperty("choices")[0]
-            .GetProperty("message")
-            .GetProperty("content")
-            .GetString();
+        
+        try 
+        {
+            var answer = jsonDoc.RootElement
+                .GetProperty("candidates")[0]
+                .GetProperty("content")
+                .GetProperty("parts")[0]
+                .GetProperty("text")
+                .GetString();
 
-        return answer ?? "Üzgünüm, şu an yanıt veremiyorum.";
+            return answer ?? "Üzgünüm, şu an yanıt veremiyorum.";
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[Gemini Parse Error] {ex.Message}");
+            return "Üzgünüm, şu an yanıt veremiyorum.";
+        }
     }
 }
