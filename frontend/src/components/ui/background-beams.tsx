@@ -7,6 +7,7 @@ export const BackgroundBeams = ({ className }: { className?: string }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     setIsMounted(true);
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({
