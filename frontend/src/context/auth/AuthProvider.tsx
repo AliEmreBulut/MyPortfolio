@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
 import { AuthContext } from './AuthContext';
 
 interface AuthProviderProps {
@@ -14,23 +15,26 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const router = useRouter();
 
     useEffect(() => {
-        const token = localStorage.getItem('jwt_token');
+        const token = Cookies.get('jwt_token');
         if (token) {
+            // eslint-disable-next-line react-hooks/exhaustive-deps
             setIsAuthenticated(true);
         }
         setIsLoading(false);
     }, []);
 
     const login = (token: string) => {
-        localStorage.setItem('jwt_token', token);
+        Cookies.set('jwt_token', token, { expires: 1, path: '/' });
         setIsAuthenticated(true);
         router.push('/admin/dashboard');
+        router.refresh();
     };
 
     const logout = () => {
-        localStorage.removeItem('jwt_token');
+        Cookies.remove('jwt_token', { path: '/' });
         setIsAuthenticated(false);
         router.push('/admin/login');
+        router.refresh();
     };
 
     return (
