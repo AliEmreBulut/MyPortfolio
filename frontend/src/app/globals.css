@@ -49,6 +49,11 @@
     background: #05070d;
     overflow-x: hidden;
   }
+  
+  /* Next.js dev indicator'ı (logoyu) tamamen gizle */
+  nextjs-portal {
+    display: none !important;
+  }
 }
 
 @layer utilities {

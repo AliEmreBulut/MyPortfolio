@@ -14,6 +14,10 @@ const nextConfig: NextConfig = {
       }
     ],
   },
+  devIndicators: {
+        
+  },
+  output: "standalone",
 };
 
 export default nextConfig;

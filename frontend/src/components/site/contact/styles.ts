@@ -16,6 +16,6 @@ export const styles = {
   socialCard: "min-h-[176px] flex flex-col items-start justify-between gap-3 p-4 rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-transparent text-inherit no-underline relative overflow-hidden transition-all duration-300 group hover:-translate-y-2 hover:border-brand-green/30 hover:bg-white/10 shadow-lg hover:shadow-2xl hover:shadow-brand-blue/20 before:absolute before:right-[-80px] before:top-[-80px] before:w-[170px] before:h-[170px] before:rounded-full before:bg-[radial-gradient(circle,rgba(98,217,255,0.16),transparent_68%)] before:opacity-0 before:pointer-events-none before:transition-opacity group-hover:before:opacity-100",
   iconWrapper: "w-12 h-12 grid place-items-center rounded-2xl border border-brand-green/20 bg-[radial-gradient(circle_at_28%_16%,rgba(124,247,196,0.18),transparent_44%),rgba(124,247,196,0.065)] text-slate-200 relative z-10",
   socialLabel: "relative z-10 text-brand-green/90 font-mono text-xs font-black tracking-widest uppercase",
-  socialValue: "relative z-10 text-slate-200/90 text-sm leading-snug font-black break-words",
+  socialValue: "relative z-10 text-slate-200/90 text-sm leading-snug font-black break-all",
   arrowBtn: "w-10 h-10 grid place-items-center self-end rounded-full border border-white/10 bg-white/5 text-slate-200/80 text-lg cursor-pointer relative z-20 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:border-brand-blue/30 group-hover:bg-brand-blue/10 group-hover:text-white"
 };
