@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Portfolio.Application.DTOs.Ai;
 using Portfolio.Application.Interfaces;
 
@@ -7,6 +8,7 @@ namespace Portfolio.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[EnableRateLimiting("ai")]
 public class AiController : ControllerBase
 {
     private readonly IAiService _aiService;

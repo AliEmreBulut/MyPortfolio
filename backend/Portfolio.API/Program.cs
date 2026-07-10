@@ -1,6 +1,8 @@
 using FluentValidation.AspNetCore;
 using Portfolio.API.Middlewares;
 using System.Text;
+using System.Threading.RateLimiting;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Portfolio.Infrastructure.Data.Contexts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -38,11 +40,36 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 builder.Services.AddAuthorization();
 
-// CORS
+// CORS — Sadece kendi frontend'imizden gelen isteklere izin ver
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
-        policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+        policy.WithOrigins(
+            "http://localhost:3000",
+            "https://localhost:3000"
+        )
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials());
+});
+
+// Rate Limiting — AI endpoint'ini kötüye kullanıma karşı koru
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    options.AddFixedWindowLimiter("ai", opt =>
+    {
+        opt.PermitLimit = 5;                           // 5 istek
+        opt.Window = TimeSpan.FromMinutes(1);           // dakikada
+        opt.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        opt.QueueLimit = 0;                             // kuyruk yok, direkt reddet
+    });
+    options.AddFixedWindowLimiter("login", opt =>
+    {
+        opt.PermitLimit = 5;                            // 5 deneme
+        opt.Window = TimeSpan.FromMinutes(5);            // 5 dakikada
+        opt.QueueLimit = 0;
+    });
 });
 
 var webRoot = builder.Environment.WebRootPath ?? Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
@@ -70,6 +97,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseHttpsRedirection();
+app.UseRateLimiter();
 app.MapControllers();
 
 using (var scope = app.Services.CreateScope())

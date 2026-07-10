@@ -24,7 +24,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }, []);
 
     const login = (token: string) => {
-        Cookies.set('jwt_token', token, { expires: 1, path: '/' });
+        Cookies.set('jwt_token', token, { 
+            expires: 1, 
+            path: '/',
+            secure: true,       // Sadece HTTPS üzerinden gönder
+            sameSite: 'Strict'  // Farklı sitelerden gelen isteklerde token'ı gönderme (CSRF koruması)
+        });
         setIsAuthenticated(true);
         router.push('/admin/dashboard');
         router.refresh();

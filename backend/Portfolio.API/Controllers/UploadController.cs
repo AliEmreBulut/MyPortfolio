@@ -23,10 +23,20 @@ public class UploadController : ControllerBase
         if (file == null || file.Length == 0)
             return BadRequest("Dosya seçilmedi.");
 
+        // GÜVENLİK: Dosya boyutu limiti (max 5MB)
+        const long maxFileSize = 5 * 1024 * 1024; // 5MB
+        if (file.Length > maxFileSize)
+            return BadRequest("Dosya boyutu 5MB'ı geçemez.");
+
         var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif", ".webp", ".pdf" };
         var ext = Path.GetExtension(file.FileName).ToLowerInvariant();
         if (!allowedExtensions.Contains(ext))
             return BadRequest("Sadece resim ve PDF dosyaları yüklenebilir.");
+
+        // GÜVENLİK: MIME type doğrulama (uzantı ile içerik tipini eşleştir)
+        var allowedMimeTypes = new[] { "image/jpeg", "image/png", "image/gif", "image/webp", "application/pdf" };
+        if (!allowedMimeTypes.Contains(file.ContentType.ToLowerInvariant()))
+            return BadRequest("Geçersiz dosya türü.");
 
         var uniqueFileName = $"{Guid.NewGuid()}{ext}";
 
