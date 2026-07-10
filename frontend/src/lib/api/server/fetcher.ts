@@ -1,4 +1,5 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+// Docker ağında sunucu tarafı (SSR) istekleri için API_URL, tarayıcı istekleri için NEXT_PUBLIC_API_URL kullanılır.
+const API_URL = process.env.API_URL || process.env.NEXT_PUBLIC_API_URL;
 
 export async function serverFetch<T>(endpoint: string, options: RequestInit = {}): Promise<T | null> {
   if (!API_URL) {
