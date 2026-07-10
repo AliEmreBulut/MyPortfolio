@@ -1,0 +1,33 @@
+export const styles = {
+  section: "w-full max-w-[1180px] mx-auto px-6 py-24 max-md:py-16 reveal",
+  headerBox: "mb-10",
+  subTitle: "text-brand-green text-xs font-black tracking-widest uppercase mb-3",
+  title: "text-[clamp(36px,5vw,60px)] leading-none font-black tracking-tight max-w-3xl text-brand-text",
+  description: "text-brand-muted max-w-3xl leading-relaxed text-base mt-4",
+  grid: "grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1",
+  
+  card: "group relative flex flex-col overflow-hidden rounded-[34px] border border-white/10 bg-[#05070d]/60 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:border-brand-green/30 hover:bg-[#0a0f1d]/80",
+  cardImageWrapper: "relative w-full h-[220px] overflow-hidden border-b border-white/5",
+  cardImage: "w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100",
+  cardContent: "flex flex-col flex-1 p-7",
+  badge: "inline-flex w-fit items-center px-3 h-7 rounded-full border border-brand-green/20 bg-brand-green/10 text-brand-green font-mono text-xs font-black uppercase mb-4",
+  cardTitle: "m-0 mb-3 text-white text-2xl leading-tight font-black",
+  cardDesc: "m-0 mb-6 text-slate-300/70 text-sm leading-relaxed flex-1",
+  techList: "flex flex-wrap gap-2 mb-6",
+  techItem: "inline-flex items-center px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-slate-300 text-xs font-bold",
+  btnPrimary: "min-h-[46px] w-full flex items-center justify-center gap-2 rounded-xl bg-brand-green text-[#03110b] font-black cursor-pointer shadow-[0_0_20px_rgba(124,247,196,0.3)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_28px_rgba(124,247,196,0.5)]",
+  
+  modalContainer: "fixed inset-0 z-[999] flex items-center justify-center p-6",
+  modalBackdrop: "absolute inset-0 bg-slate-950/70 backdrop-blur-md",
+  modalDialog: "relative z-10 w-[min(960px,100%)] max-h-[min(780px,calc(100vh-48px))] grid grid-cols-[1.05fr_0.95fr] max-md:grid-cols-1 overflow-hidden rounded-[34px] border border-white/10 bg-gradient-to-b from-slate-900/95 to-brand-bg/95 shadow-2xl",
+  modalClose: "absolute right-4 top-4 z-20 w-10 h-10 grid place-items-center rounded-full border border-white/10 bg-black/20 text-slate-200 text-2xl cursor-pointer hover:bg-black/40 hover:text-white transition-all",
+  modalImageWrapper: "min-h-[430px] max-md:min-h-[250px] relative bg-slate-900 overflow-hidden",
+  modalImage: "w-full h-full min-h-[430px] max-md:min-h-[250px] object-cover block opacity-90",
+  modalFallback: "absolute inset-0 grid place-items-center text-slate-300/60 text-3xl font-black tracking-tighter",
+  modalContent: "p-10 max-md:p-7 overflow-auto flex flex-col",
+  modalStack: "flex flex-wrap gap-2.5 mt-6 mb-8 [&>span]:inline-flex [&>span]:min-h-10 [&>span]:items-center [&>span]:px-4 [&>span]:rounded-full [&>span]:border [&>span]:border-white/10 [&>span]:bg-white/5 [&>span]:text-slate-200 [&>span]:text-sm [&>span]:font-bold",
+  
+  btnSource: "flex-1 min-h-[46px] flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 text-slate-200 font-bold transition-all duration-200 hover:bg-white/10 hover:text-white",
+  btnLive: "flex-1 min-h-[46px] flex items-center justify-center gap-2 rounded-xl border border-brand-green/30 bg-brand-green/10 text-brand-green font-bold transition-all duration-200 hover:bg-brand-green/20 hover:border-brand-green/50",
+  modalActions: "flex gap-4 mt-auto max-sm:flex-col",
+};

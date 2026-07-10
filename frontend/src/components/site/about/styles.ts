@@ -6,11 +6,7 @@ export const styles = {
   description: "text-brand-muted max-w-3xl leading-relaxed text-base mt-4",
   grid: "grid grid-cols-[330px_1fr] gap-7 items-stretch max-md:grid-cols-1",
   articleCard: "p-10 max-md:p-7",
-  textBlock1: "text-slate-200 text-lg leading-relaxed mb-5",
-  textBlock2: "text-slate-400 text-base leading-relaxed mb-5",
-  textBlock3: "text-slate-400 text-base leading-relaxed",
-  
-  // Aside Styles
+  paragraph: "text-slate-300/90 text-base leading-relaxed mb-5",
   aside: "flex flex-col items-center justify-center gap-5 py-8 px-6 min-h-[430px] relative overflow-hidden group",
   avatarWrapper: "w-48 h-48 rounded-full p-1.5 relative bg-gradient-to-br from-brand-green/85 via-brand-blue/75 to-brand-purple/70 shadow-2xl transition-transform duration-500 group-hover:scale-105",
   avatarImage: "w-full h-full rounded-full block object-cover bg-white/5",

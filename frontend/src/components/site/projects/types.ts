@@ -12,4 +12,7 @@ export interface Project {
   techDetails: TechDetail[];
   stack: string[];
   image: string;
+  galleryImages?: string[];
+  githubUrl?: string;
+  liveUrl?: string;
 }

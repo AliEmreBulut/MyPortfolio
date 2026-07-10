@@ -5,10 +5,18 @@ import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 import { GlassCard } from "@/components/ui/glass-card";
 import { heroTerminalTabs } from "./data";
 import { styles } from "./styles";
+import { UserProfileResponse } from "@/types/user";
 
-export function HeroTerminal() {
-  const [activeTabId, setActiveTabId] = useState(heroTerminalTabs[0].id);
-  const activeTab = heroTerminalTabs.find(t => t.id === activeTabId) || heroTerminalTabs[0];
+export function HeroTerminal({ user }: { user?: UserProfileResponse | null }) {
+  const customSnippet = user?.heroCodeSnippet;
+
+  // If user provided a custom snippet, we create a dynamic tab for it
+  const dynamicTabs = customSnippet 
+    ? [{ id: 'custom', label: 'developer.json', command: 'cat developer.json', fileName: 'developer.json', content: customSnippet }]
+    : heroTerminalTabs;
+
+  const [activeTabId, setActiveTabId] = useState(dynamicTabs[0].id);
+  const activeTab = dynamicTabs.find(t => t.id === activeTabId) || dynamicTabs[0];
 
   const [displayedText, setDisplayedText] = useState("");
 
@@ -52,7 +60,7 @@ export function HeroTerminal() {
                   <span className={styles.commandCursor}></span>
                 </CardItem>
                 <div className={styles.tabList}>
-                  {heroTerminalTabs.map(tab => (
+                  {dynamicTabs.map(tab => (
                     <CardItem key={tab.id} translateZ={activeTabId === tab.id ? 30 : 10}>
                       <button 
                         className={activeTabId === tab.id ? styles.tabActive : styles.tabInactive}

@@ -13,7 +13,8 @@ export const projectsData: Project[] = [
       { title: "Database", desc: "MariaDB / MySQL, Entity Framework ve ilişkisel veri modeli." },
     ],
     stack: ["ASP.NET Core", "C#", "MariaDB"],
-    image: "/project-hospital.jpg",
+    image: "https://picsum.photos/600/400?random=1",
+    githubUrl: "https://github.com/aliemrebulut/hospital-automation",
   },
   {
     id: "letsmeet",
@@ -27,7 +28,9 @@ export const projectsData: Project[] = [
       { title: "Database", desc: "Firestore, Firebase Storage ve kullanıcı/etkinlik verileri." },
     ],
     stack: ["React", "Vite", "Firebase"],
-    image: "/project-letsmeet.jpg",
+    image: "https://picsum.photos/600/400?random=2",
+    githubUrl: "https://github.com/aliemrebulut/letsmeet",
+    liveUrl: "https://letsmeet-demo.web.app",
   },
   {
     id: "store",
@@ -41,6 +44,8 @@ export const projectsData: Project[] = [
       { title: "Database", desc: "Ürün verisi için JSON/mock data mantığı ve ileride API desteği." },
     ],
     stack: ["React", "TypeScript", "Tailwind CSS"],
-    image: "/project-store.jpg",
+    image: "https://picsum.photos/600/400?random=3",
+    githubUrl: "https://github.com/aliemrebulut/gs-store-clone",
+    liveUrl: "https://gs-store-clone.vercel.app",
   },
 ];
