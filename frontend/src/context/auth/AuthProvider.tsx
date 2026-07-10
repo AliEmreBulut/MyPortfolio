@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         Cookies.set('jwt_token', token, { 
             expires: 1, 
             path: '/',
-            secure: true,       // Sadece HTTPS üzerinden gönder
+            secure: window.location.protocol === 'https:', // Sadece HTTPS üzerinden çalışıyorsa secure yap
             sameSite: 'Strict'  // Farklı sitelerden gelen isteklerde token'ı gönderme (CSRF koruması)
         });
         setIsAuthenticated(true);

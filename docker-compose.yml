@@ -10,13 +10,15 @@ services:
       - "5024:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Host=host.docker.internal;Database=MyPortfolio;Username=postgres;Password=123456
+      - ConnectionStrings__DefaultConnection=Host=host.docker.internal;Database=MyPortfolio;Username=postgres;Password=YOUR_POSTGRES_PASSWORD
     restart: unless-stopped
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:5024/api
     container_name: portfolio_frontend
     ports:
       - "3000:3000"
