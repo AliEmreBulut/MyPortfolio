@@ -47,19 +47,23 @@ export function ProjectForm({ project, allSkills, allCategories, onSave, onCance
           <div className="space-y-4">
             <div>
               <label className={s.labelBlock}>Proje Adı *</label>
-              <input required type="text" name="title" value={formData.title} onChange={handleChange} className={s.inputSm} />
+              <input required type="text" name="title" value={formData.title} onChange={handleChange} maxLength={200} className={s.inputSm} />
+              <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.title || "").length} / 200</span></div>
             </div>
             <div>
               <label className={s.labelBlock}>Kısa Açıklama</label>
-              <input type="text" name="shortSummary" value={formData.shortSummary} onChange={handleChange} className={s.inputSm} />
+              <input type="text" name="shortSummary" value={formData.shortSummary} onChange={handleChange} maxLength={500} className={s.inputSm} />
+              <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.shortSummary || "").length} / 500</span></div>
             </div>
             <div>
               <label className={s.labelBlock}>GitHub URL</label>
-              <input type="url" name="githubUrl" value={formData.githubUrl} onChange={handleChange} className={s.inputSm} />
+              <input type="url" name="githubUrl" value={formData.githubUrl} onChange={handleChange} maxLength={500} className={s.inputSm} />
+              <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.githubUrl || "").length} / 500</span></div>
             </div>
             <div>
               <label className={s.labelBlock}>Canlı Demo URL</label>
-              <input type="url" name="liveUrl" value={formData.liveUrl} onChange={handleChange} className={s.inputSm} />
+              <input type="url" name="liveUrl" value={formData.liveUrl} onChange={handleChange} maxLength={500} className={s.inputSm} />
+              <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.liveUrl || "").length} / 500</span></div>
             </div>
             <div>
               <label className={s.labelBlock}>Kapak Resmi</label>
@@ -102,6 +106,7 @@ export function ProjectForm({ project, allSkills, allCategories, onSave, onCance
                     type="text" 
                     value={newSkillName}
                     onChange={(e) => setNewSkillName(e.target.value)}
+                    maxLength={50}
                     placeholder="Hızlı Yetenek Ekle..."
                     className="px-2 py-1 bg-white/5 border border-white/10 rounded text-xs text-white focus:outline-none focus:border-brand-green w-32"
                     onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), handleQuickAddSkill())}
@@ -144,7 +149,8 @@ export function ProjectForm({ project, allSkills, allCategories, onSave, onCance
             
             <div>
               <label className={s.labelBlock}>Detaylı Açıklama</label>
-              <textarea name="detailedDescription" value={formData.detailedDescription} onChange={handleChange} rows={5} className={`${s.inputSm} !h-auto p-3`} />
+              <textarea name="detailedDescription" value={formData.detailedDescription} onChange={handleChange} rows={5} maxLength={5000} className={`${s.inputSm} !h-auto p-3`} />
+              <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.detailedDescription || "").length} / 5000</span></div>
             </div>
           </div>
         </div>

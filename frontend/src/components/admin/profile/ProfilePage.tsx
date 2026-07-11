@@ -38,48 +38,50 @@ export default function ProfilePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label className={s.label}>Ad Soyad *</label>
-              <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} required className={s.input} />
+              <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} required maxLength={100} className={s.input} />
+              <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.fullName || "").length} / 100</span></div>
             </div>
             
             <div className="space-y-2">
-              <label className={s.label}>Unvan (Title) *</label>
-              <input type="text" name="title" value={formData.title} onChange={handleChange} required className={s.input} />
+              <input type="text" name="title" value={formData.title} onChange={handleChange} required maxLength={100} className={s.input} />
+              <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.title || "").length} / 100</span></div>
             </div>
           </div>
 
           <div className="space-y-2">
-            <label className={s.label}>Kısa Özet (Hero Karşılama Bölümü İçin)</label>
-            <textarea name="shortSummary" value={formData.shortSummary} onChange={handleChange} rows={3} className={s.textarea} placeholder="Ana sayfada isminizin altında görünecek kısa ve etkili cümle..." />
+            <textarea name="shortSummary" value={formData.shortSummary} onChange={handleChange} rows={3} maxLength={300} className={s.textarea} placeholder="Ana sayfada isminizin altında görünecek kısa ve etkili cümle..." />
+            <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.shortSummary || "").length} / 300</span></div>
           </div>
 
           <div className="space-y-2">
-            <label className={s.label}>Hero Terminal Kodu (JSON veya Düz Metin)</label>
-            <textarea name="heroCodeSnippet" value={formData.heroCodeSnippet} onChange={handleChange} rows={6} className={`${s.textarea} font-mono text-sm`} placeholder={`{\n  "yetenekler": ["C#", "React"],\n  "ingilizce": "B2 - Upper Intermediate"\n}`} />
-            <p className="text-xs text-slate-400">Ana sayfanın sağ üstündeki kod bloğunda görünecek metni buraya yazabilirsiniz.</p>
+            <textarea name="heroCodeSnippet" value={formData.heroCodeSnippet} onChange={handleChange} rows={6} maxLength={2000} className={`${s.textarea} font-mono text-sm`} placeholder={`{\n  "yetenekler": ["C#", "React"],\n  "ingilizce": "B2 - Upper Intermediate"\n}`} />
+            <div className="flex justify-between items-start mt-1">
+              <p className="text-xs text-slate-400">Ana sayfanın sağ üstündeki kod bloğunda görünecek metni buraya yazabilirsiniz.</p>
+              <span className="text-[10px] text-slate-500 shrink-0">{(formData.heroCodeSnippet || "").length} / 2000</span>
+            </div>
           </div>
 
           <div className="space-y-2">
-            <label className={s.label}>Hakkımda (About - Uzun Açıklama)</label>
-            <textarea name="aboutText" value={formData.aboutText} onChange={handleChange} rows={5} className={s.textarea} />
+            <textarea name="aboutText" value={formData.aboutText} onChange={handleChange} rows={5} maxLength={3000} className={s.textarea} />
+            <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.aboutText || "").length} / 3000</span></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label className={s.label}>E-posta</label>
-              <input type="email" name="email" value={formData.email} onChange={handleChange} className={s.input} />
+              <input type="email" name="email" value={formData.email} onChange={handleChange} maxLength={100} className={s.input} />
+              <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.email || "").length} / 100</span></div>
             </div>
             <div className="space-y-2">
-              <label className={s.label}>Telefon</label>
-              <input type="text" name="phone" value={formData.phone} onChange={handleChange} className={s.input} />
+              <input type="text" name="phone" value={formData.phone} onChange={handleChange} maxLength={30} className={s.input} />
+              <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.phone || "").length} / 30</span></div>
             </div>
             <div className="space-y-2">
-              <label className={s.label}>GitHub URL</label>
-              <input type="url" name="gitHubUrl" value={formData.gitHubUrl} onChange={handleChange} className={s.input} />
+              <input type="url" name="gitHubUrl" value={formData.gitHubUrl} onChange={handleChange} maxLength={200} className={s.input} />
+              <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.gitHubUrl || "").length} / 200</span></div>
             </div>
             <div className="space-y-2">
-              <label className={s.label}>LinkedIn URL</label>
-              <input type="url" name="linkedInUrl" value={formData.linkedInUrl} onChange={handleChange} className={s.input} />
+              <input type="url" name="linkedInUrl" value={formData.linkedInUrl} onChange={handleChange} maxLength={200} className={s.input} />
+              <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.linkedInUrl || "").length} / 200</span></div>
             </div>
             <div className="space-y-2">
               <label className={s.label}>Profil Fotoğrafı URL</label>
@@ -90,7 +92,7 @@ export default function ProfilePage() {
                   </div>
                 )}
                 <div className="flex-1 space-y-2">
-                  <input type="text" name="profileImageUrl" value={formData.profileImageUrl} onChange={handleChange} className={s.input} placeholder="Veya URL girin..." />
+                  <input type="text" name="profileImageUrl" value={formData.profileImageUrl} onChange={handleChange} maxLength={500} className={s.input} placeholder="Veya URL girin..." />
                   <input type="file" accept="image/*" onChange={handlePhotoUpload} disabled={uploadingPhoto} className="text-white text-sm" />
                 </div>
               </div>
@@ -99,7 +101,7 @@ export default function ProfilePage() {
             <div className="space-y-2">
               <label className={s.label}>Özgeçmiş (CV) URL</label>
               <div className="space-y-2">
-                <input type="text" name="resumeUrl" value={formData.resumeUrl} onChange={handleChange} className={s.input} placeholder="Veya URL girin..." />
+                <input type="text" name="resumeUrl" value={formData.resumeUrl} onChange={handleChange} maxLength={500} className={s.input} placeholder="Veya URL girin..." />
                 <div className="flex items-center gap-4">
                   <input type="file" accept=".pdf" onChange={handleCvUpload} disabled={uploadingCv} className="text-white text-sm" />
                   {formData.resumeUrl && <a href={formData.resumeUrl} target="_blank" rel="noreferrer" className="text-xs text-brand-green underline">Mevcut CV&apos;yi Görüntüle</a>}

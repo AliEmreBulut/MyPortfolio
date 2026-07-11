@@ -48,7 +48,8 @@ export function CategoryForm({ category, onSave, onCancel }: CategoryFormProps) 
         <div className="grid grid-cols-1 gap-4">
           <div>
             <label className={s.labelBlock}>Kategori Adı *</label>
-            <input required type="text" name="name" value={formData.name} onChange={handleChange} className={s.inputSm} />
+            <input required type="text" name="name" value={formData.name} onChange={handleChange} maxLength={50} className={s.inputSm} />
+            <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.name || "").length} / 50</span></div>
           </div>
         </div>
         <div className="flex justify-end gap-3 pt-4">

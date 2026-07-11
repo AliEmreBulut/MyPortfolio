@@ -31,15 +31,18 @@ export function ExperienceForm({ experience, userId, onSave, onCancel }: Experie
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label className={s.labelBlock}>Başlık/Pozisyon *</label>
-            <input required type="text" name="title" value={formData.title} onChange={handleChange} className={s.inputSm} />
+            <input required type="text" name="title" value={formData.title} onChange={handleChange} maxLength={200} className={s.inputSm} />
+            <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.title || "").length} / 200</span></div>
           </div>
           <div>
             <label className={s.labelBlock}>Kurum/Şirket *</label>
-            <input required type="text" name="company" value={formData.company} onChange={handleChange} className={s.inputSm} />
+            <input required type="text" name="company" value={formData.company} onChange={handleChange} maxLength={200} className={s.inputSm} />
+            <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.company || "").length} / 200</span></div>
           </div>
           <div>
             <label className={s.labelBlock}>Konum</label>
-            <input type="text" name="location" value={formData.location} onChange={handleChange} className={s.inputSm} />
+            <input type="text" name="location" value={formData.location} onChange={handleChange} maxLength={100} className={s.inputSm} />
+            <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.location || "").length} / 100</span></div>
           </div>
           <div>
             <label className={s.labelBlock}>Tür</label>
@@ -62,11 +65,12 @@ export function ExperienceForm({ experience, userId, onSave, onCancel }: Experie
           </div>
           <div>
             <label className={s.labelBlock}>Sıralama Numarası</label>
-            <input type="number" name="displayOrder" value={formData.displayOrder} onChange={handleChange} className={s.inputSm} />
+            <input type="number" name="displayOrder" value={formData.displayOrder} onChange={handleChange} min={0} max={999} className={s.inputSm} />
           </div>
           <div className="col-span-full">
             <label className={s.labelBlock}>Açıklama</label>
-            <textarea name="description" value={formData.description} onChange={handleChange} rows={4} className={s.textarea} />
+            <textarea name="description" value={formData.description} onChange={handleChange} rows={4} maxLength={1000} className={s.textarea} />
+            <div className="text-right mt-1"><span className="text-[10px] text-slate-500">{(formData.description || "").length} / 1000</span></div>
           </div>
         </div>
         <div className="flex justify-end gap-3 pt-4 border-t border-white/10">
