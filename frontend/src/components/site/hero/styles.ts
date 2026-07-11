@@ -1,7 +1,7 @@
 export const styles = {
   section: "w-full max-w-[1180px] mx-auto px-6 reveal min-h-screen pt-28 pb-16 grid grid-cols-[minmax(0,1fr)_minmax(420px,640px)] gap-11 items-center max-md:grid-cols-1 max-md:pt-32 relative overflow-hidden",
   
-  // Left content
+  // Sol taraftaki içerik
   contentWrapper: "max-w-2xl max-md:max-w-full relative z-10",
   badge: "inline-flex items-center gap-2 py-2 px-3.5 rounded-full border border-brand-green/20 bg-gradient-to-b from-brand-green/5 to-white/5 text-[#e8fff4] text-sm font-bold backdrop-blur-md mb-5 shadow-[inset_0_0_0_1px_rgba(124,247,196,0.03),0_18px_55px_rgba(0,0,0,0.15)]",
   badgeDot: "w-2 h-2 rounded-full bg-brand-green shadow-[0_0_0_6px_rgba(124,247,196,0.13)]",
@@ -12,10 +12,10 @@ export const styles = {
   btnOutline: "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-black tracking-tight transition-all duration-200 border border-white/10 bg-white/5 text-white shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:-translate-y-1 hover:border-brand-green/35 hover:bg-white/10 hover:shadow-[0_16px_38px_rgba(0,0,0,0.18),0_0_24px_rgba(124,247,196,0.08)] min-w-32",
   btnPrimary: "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-black tracking-tight transition-all duration-200 border border-brand-green/20 bg-gradient-to-br from-brand-green to-brand-blue text-[#03110b] shadow-[0_16px_38px_rgba(98,217,255,0.22)] hover:-translate-y-1 hover:shadow-[0_22px_48px_rgba(98,217,255,0.30),0_0_32px_rgba(124,247,196,0.20)] hover:scale-105 min-w-32",
 
-  // Right aside (Terminal & Widget)
+  // Sağdaki Terminal & Widget
   aside: "relative w-full max-w-[620px] ml-auto before:absolute before:inset-[-3px] before:rounded-[38px] before:bg-gradient-to-br before:from-brand-green/75 before:via-brand-blue/60 before:to-brand-purple/55 before:blur-[30px] before:opacity-25 before:-z-10 max-md:hidden group",
   
-  // Terminal Card (GlassCard wrapper)
+  // Terminal Penceresi
   terminalHeader: "flex items-center justify-between gap-3 px-4 min-h-12 border-b border-white/10 bg-white/5",
   terminalDots: "flex gap-2",
   terminalDot: "w-3 h-3 rounded-full",
@@ -35,7 +35,7 @@ export const styles = {
   outputStatus: "inline-flex items-center gap-2 text-brand-green/80 before:w-2 before:h-2 before:rounded-full before:bg-brand-green before:shadow-sm",
   outputContent: "flex-1 p-4 font-mono text-slate-200 text-xs leading-relaxed whitespace-pre-wrap overflow-auto scrollbar-thin scrollbar-thumb-brand-green/40 scrollbar-track-white/5",
 
-  // Hero Widget
+  // Hero widget
   widgetHeader: "flex items-center gap-2 min-h-12 px-4 border-b border-white/10 bg-black/20 font-mono text-slate-200 text-sm font-bold",
   widgetCursor: "w-1.5 h-4 bg-brand-green inline-block animate-widget-blink shadow-[0_0_12px_rgba(124,247,196,0.45)]",
   widgetFilters: "grid grid-cols-3 gap-2 p-3",
