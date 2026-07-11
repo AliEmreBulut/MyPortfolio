@@ -64,7 +64,7 @@ export default function Experiences({ experiences }: ExperiencesProps) {
                 </h4>
 
                 {exp.description && (
-                  <p className="text-slate-400 text-sm leading-relaxed max-w-2xl">
+                  <p className="text-slate-400 text-sm leading-relaxed max-w-2xl whitespace-pre-wrap">
                     {exp.description}
                   </p>
                 )}
