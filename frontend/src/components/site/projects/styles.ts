@@ -22,7 +22,7 @@ export const styles = {
   modalDialog: "relative z-10 w-[min(960px,100%)] max-h-[min(780px,calc(100vh-48px))] grid grid-cols-[1.05fr_0.95fr] max-md:grid-cols-1 overflow-hidden rounded-[34px] border border-white/10 bg-gradient-to-b from-slate-900/95 to-brand-bg/95 shadow-2xl",
   modalClose: "absolute right-4 top-4 z-20 w-10 h-10 grid place-items-center rounded-full border border-white/10 bg-black/20 text-slate-200 text-2xl cursor-pointer hover:bg-black/40 hover:text-white transition-all",
   modalImageWrapper: "min-h-[430px] max-md:min-h-[250px] relative overflow-hidden flex items-center justify-center p-6",
-  modalImage: "w-full h-full max-h-[400px] object-contain block opacity-90 drop-shadow-2xl",
+  modalImage: "w-full h-full object-contain block opacity-90 drop-shadow-2xl",
   modalFallback: "absolute inset-0 grid place-items-center text-slate-300/60 text-3xl font-black tracking-tighter",
   modalContent: "p-10 max-md:p-7 overflow-auto flex flex-col",
   modalStack: "flex flex-wrap gap-2.5 mt-6 mb-8 [&>span]:inline-flex [&>span]:min-h-10 [&>span]:items-center [&>span]:px-4 [&>span]:rounded-full [&>span]:border [&>span]:border-white/10 [&>span]:bg-white/5 [&>span]:text-slate-200 [&>span]:text-sm [&>span]:font-bold",
